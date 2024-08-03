@@ -20,7 +20,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL",'"https://"'
+        buildConfigField "String", "BASE_URL",'"https://api.github.com/"'
 
     }
 

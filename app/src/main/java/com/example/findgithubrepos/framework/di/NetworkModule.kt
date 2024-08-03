@@ -1,6 +1,7 @@
 package com.example.findgithubrepos.framework.di
 
 import android.app.Application
+import com.example.findgithubrepos.BuildConfig
 import com.example.findgithubrepos.framework.GitHubEndPoint
 import com.example.findrepositorygithub.MyApplication
 import dagger.Module
@@ -18,7 +19,6 @@ class NetworkModule(
 ) {
 
     @Provides
-    @Singleton
     fun provideHttpCache(application: Application): Cache {
         val cacheSize = 10 * 1024 * 1024
         return Cache(application.cacheDir, cacheSize.toLong())
@@ -28,15 +28,14 @@ class NetworkModule(
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             setLevel(
-                //if (BuildConfig.DEBUG) {
+                if (BuildConfig.DEBUG) {
                     HttpLoggingInterceptor.Level.BODY
-                //} else HttpLoggingInterceptor.Level.NONE
+                } else HttpLoggingInterceptor.Level.NONE
             )
         }
     }
 
     @Provides
-    @Singleton
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
     ) : OkHttpClient {
@@ -47,14 +46,12 @@ class NetworkModule(
     }
 
     @Provides
-    @Singleton
     fun provideGsonConverterFactory() : GsonConverterFactory {
         return GsonConverterFactory
             .create()
     }
 
     @Provides
-    @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory,
