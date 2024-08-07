@@ -2,9 +2,11 @@ plugins {
     id 'com.android.application'
     id 'kotlin-parcelize'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
 }
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.example.findgithubrepos'
@@ -16,6 +18,7 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
+        multiDexEnabled = true
 
         vectorDrawables.useSupportLibrary = true
 
@@ -44,13 +47,18 @@ android {
     buildFeatures{
         buildConfig = true
         viewBinding true
+        dataBinding = true
     }
+    kapt {
+        generateStubs = true
+    }
+
 }
 
 dependencies {
 
     implementation libs.androidx.core.ktx
-    implementation libs.androidx.appcompat
+   //implementation libs.androidx.appcompat
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
@@ -58,6 +66,7 @@ dependencies {
     implementation libs.androidx.lifecycle.viewmodel.ktx
     implementation libs.androidx.lifecycle.livedata.ktx
     implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.extensions
 
     implementation libs.kotlinx.coroutines.core
     implementation libs.kotlinx.coroutines.android
@@ -71,13 +80,24 @@ dependencies {
     implementation libs.picasso
     implementation libs.circleimageview
 
+    implementation libs.androidx.navigation.fragment
+    implementation libs.androidx.navigation.ui
+
     implementation platform(libs.okhttp.bom)
     implementation libs.okhttp
     implementation libs.logging.interceptor
 
+    implementation libs.dagger.android.support
     implementation libs.dagger.android
+    implementation libs.dagger
+    implementation libs.androidx.lifecycle.viewmodel.android
     kapt libs.dagger.android.processor
     kapt libs.dagger.compiler
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //rx android
+    implementation libs.rxandroid
+    implementation libs.rxjava
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

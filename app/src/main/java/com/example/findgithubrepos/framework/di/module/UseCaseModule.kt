@@ -1,4 +1,4 @@
-package com.example.findgithubrepos.framework.di
+package com.example.findgithubrepos.framework.di.module
 
 import com.example.findgithubrepos.domain.useCase.GetReposStarsGitHubUseCase
 import com.example.findgithubrepos.domain.useCase.GetReposStarsGitHubUseCaseImpl
@@ -9,6 +9,6 @@ import dagger.Module
 interface UseCaseModule {
 
     @Binds
-    fun bindGetReposStarsGitHubUseCaseImpl(useCase: GetReposStarsGitHubUseCaseImpl): GetReposStarsGitHubUseCase
+    fun bindReposStarsGitHubUseCase(useCase: GetReposStarsGitHubUseCaseImpl): GetReposStarsGitHubUseCase
 
 }

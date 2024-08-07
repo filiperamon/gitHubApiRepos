@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/listReposGitHubFragment">
+
+    <fragment
+        android:id="@+id/listReposGitHubFragment"
+        android:name="com.example.findgithubrepos.presentation.fragment.ListReposGitHubFragment"
+        android:label="GitHub Repos"
+        tools:layout="@layout/list_repos_git_hub_fragment"/>
+</navigation>

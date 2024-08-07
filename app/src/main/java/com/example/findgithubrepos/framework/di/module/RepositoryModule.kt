@@ -1,4 +1,4 @@
-package com.example.findgithubrepos.framework.di
+package com.example.findgithubrepos.framework.di.module
 
 import com.example.findgithubrepos.data.repository.ReposGitHubRepository
 import com.example.findgithubrepos.data.repository.ReposGitHubRepositoryImpl

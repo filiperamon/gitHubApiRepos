@@ -1,4 +1,4 @@
-package com.example.findgithubrepos.framework.di
+package com.example.findgithubrepos.framework.di.module
 
 import android.app.Application
 import com.example.findgithubrepos.BuildConfig
@@ -10,19 +10,11 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
-@Module
-class NetworkModule(
-    private val mBaseUrl: String
-) {
-
-    @Provides
-    fun provideHttpCache(application: Application): Cache {
-        val cacheSize = 10 * 1024 * 1024
-        return Cache(application.cacheDir, cacheSize.toLong())
-    }
+@Module(includes = [AppModule::class])
+class NetworkModule {
 
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
@@ -41,7 +33,6 @@ class NetworkModule(
     ) : OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .cache(provideHttpCache(MyApplication()))
             .build()
     }
 
@@ -57,9 +48,10 @@ class NetworkModule(
         converterFactory: GsonConverterFactory,
     ): GitHubEndPoint {
         return Retrofit.Builder()
-            .baseUrl(mBaseUrl)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(GitHubEndPoint::class.java)
     }
