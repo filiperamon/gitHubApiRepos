@@ -1,9 +1,11 @@
 package com.example.findgithubrepos.presentation.viewModel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.findgithubrepos.domain.model.RepositoryItemResponse
 import com.example.findgithubrepos.domain.useCase.GetReposStarsGitHubUseCase
 import com.example.findgithubrepos.domain.utils.addToCompositeDisposable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,7 +19,11 @@ class ListReposGitHubViewModel @Inject constructor(
 
     private val TAG = ListReposGitHubViewModel::class.java.simpleName
 
-    val testTitle: MutableLiveData<String> = MutableLiveData()
+    private val isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val iLoadingLiveData : LiveData<Boolean> get() = isLoading
+
+    private val reposGitHubList: MutableLiveData<List<RepositoryItemResponse>> = MutableLiveData()
+    val listReposGitHubLiveData : LiveData<List<RepositoryItemResponse>> get() = reposGitHubList
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -25,18 +31,25 @@ class ListReposGitHubViewModel @Inject constructor(
         compositeDisposable.clear()
     }
 
-    fun getReposStarsGitHub() {
-        getReposStarsGitHubUseCase.gitHubResponseCallBack()
+    fun getReposStarsGitHub(page: Int) {
+
+        isLoading.value = true
+
+        getReposStarsGitHubUseCase.gitHubResponseCallBack(LANGUAGE_FILTER, SORT_FILTER, page)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .doOnTerminate {
-                Log.d("ListReposGitHubViewModel", "========================= FINISH =========================")
+                isLoading.value = false
             }
             .subscribe({ response ->
-                Log.d("ListReposGitHubViewModel", "response: $response")
+                reposGitHubList.value = response.items
             }, { e ->
                 Log.e("ListReposGitHubViewModel", "response: ${e.message}")
             }).addToCompositeDisposable(compositeDisposable)
     }
 
+    companion object {
+        const val LANGUAGE_FILTER = "language:Java"
+        const val SORT_FILTER = "stars"
+    }
 }

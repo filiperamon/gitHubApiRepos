@@ -16,6 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module(includes = [AppModule::class])
 class NetworkModule {
 
+
+
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {

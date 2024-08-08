@@ -9,7 +9,7 @@ class GetReposStarsGitHubUseCaseImpl @Inject constructor(
     private val reposGitHubRepository: ReposGitHubRepository
 ) : GetReposStarsGitHubUseCase {
 
-    override fun gitHubResponseCallBack() : Observable<GitHubResponse> {
-        return reposGitHubRepository.getListStarsJavaRepos()
+    override fun gitHubResponseCallBack(language: String, sort: String, page: Int) : Observable<GitHubResponse> {
+        return reposGitHubRepository.getListStarsJavaRepos(language, sort, page)
     }
 }

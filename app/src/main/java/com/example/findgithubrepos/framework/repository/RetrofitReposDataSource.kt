@@ -10,7 +10,7 @@ class RetrofitReposDataSource @Inject constructor(
     private val gitHubEndPoint: GitHubEndPoint
 ) : ReposRemoteDataSource<GitHubResponse> {
 
-    override fun getListStarsJavaRepos() : Observable<GitHubResponse> {
-        return gitHubEndPoint.getListStarsJavaRepos()
+    override fun getListStarsJavaRepos(language: String, sort: String, page: Int) : Observable<GitHubResponse> {
+        return gitHubEndPoint.getListStarsJavaRepos(language, sort, page)
     }
 }

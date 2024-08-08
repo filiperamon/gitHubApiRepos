@@ -4,5 +4,5 @@ import com.example.findgithubrepos.domain.model.GitHubResponse
 import io.reactivex.Observable
 
 interface GetReposStarsGitHubUseCase {
-    fun gitHubResponseCallBack() : Observable<GitHubResponse>
+    fun gitHubResponseCallBack(language: String, sort: String, page: Int) : Observable<GitHubResponse>
 }

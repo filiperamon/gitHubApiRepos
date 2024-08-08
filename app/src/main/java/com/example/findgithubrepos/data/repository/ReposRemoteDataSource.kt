@@ -4,5 +4,5 @@ import com.example.findgithubrepos.domain.model.GitHubResponse
 import io.reactivex.Observable
 
 interface ReposRemoteDataSource<T> {
-    fun getListStarsJavaRepos() : Observable<GitHubResponse>
+    fun getListStarsJavaRepos(language: String, sort: String, page: Int) : Observable<GitHubResponse>
 }
