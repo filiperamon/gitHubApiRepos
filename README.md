@@ -14,7 +14,7 @@ Foram utilizados as seguintes libs:
  - Imagens: Glide
  - Parcelize: Gson
 
-# Implementação do MVVM + Clean Architecture
+# Implementação MVVM + Clean Architecture
 
 Camadas separadas em:
 
