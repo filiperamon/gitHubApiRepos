@@ -10,7 +10,7 @@ class GetPullsReposUseCaseImpl @Inject constructor(
     private val reposGitHubRepository: ReposGitHubRepository
 ) : GetPullsReposUseCase {
 
-    override fun getListPullRepos(owner: String, repo: String): Observable<PullRequestResponse> {
+    override fun getListPullRepos(owner: String, repo: String): Observable<List<PullRequestResponse>> {
         return reposGitHubRepository.getListPullRepos(owner, repo)
     }
 }

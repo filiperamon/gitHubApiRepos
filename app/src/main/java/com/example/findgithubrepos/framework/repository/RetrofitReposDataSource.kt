@@ -15,7 +15,7 @@ class RetrofitReposDataSource @Inject constructor(
         return gitHubEndPoint.getListStarsJavaRepos(language, sort, page)
     }
 
-    override fun getListPullRepos(owner: String, repo: String): Observable<PullRequestResponse> {
+    override fun getListPullRepos(owner: String, repo: String): Observable<List<PullRequestResponse>> {
         return gitHubEndPoint.getRepoPullsDetails(owner, repo)
     }
 }

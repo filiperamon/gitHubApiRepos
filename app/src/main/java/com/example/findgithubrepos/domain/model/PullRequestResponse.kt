@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PullRequestResponse(
-    @SerializedName("url")
+    @SerializedName("html_url")
     val url: String,
     @SerializedName("title")
     val title: String,

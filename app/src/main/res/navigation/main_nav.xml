@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listReposGitHubFragment"
         android:name="com.example.findgithubrepos.presentation.fragment.ListReposGitHubFragment"
-        android:label="GitHub Repos"
+        android:label="GitHub Repositores"
         tools:layout="@layout/list_repos_git_hub_fragment">
         <action
             android:id="@+id/action_listReposGitHubFragment_to_listPullReposFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/listPullReposFragment"
         android:name="com.example.findgithubrepos.presentation.fragment.ListPullReposFragment"
-        android:label="ListPullReposFragment"
+        android:label="Pull Requests"
         tools:layout="@layout/list_repos_pull_fragment" >
 
         <argument

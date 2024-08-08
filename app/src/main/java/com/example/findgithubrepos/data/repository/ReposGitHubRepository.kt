@@ -6,5 +6,5 @@ import io.reactivex.Observable
 
 interface ReposGitHubRepository {
     fun getListStarsJavaRepos(language: String, sort: String, page: Int) : Observable<GitHubResponse>
-    fun getListPullRepos(owner: String, repo: String) : Observable<PullRequestResponse>
+    fun getListPullRepos(owner: String, repo: String) : Observable<List<PullRequestResponse>>
 }

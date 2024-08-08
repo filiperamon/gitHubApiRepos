@@ -5,5 +5,5 @@ import com.example.findgithubrepos.domain.model.PullRequestResponse
 import io.reactivex.Observable
 
 interface GetPullsReposUseCase {
-    fun getListPullRepos(owner: String, repo: String) : Observable<PullRequestResponse>
+    fun getListPullRepos(owner: String, repo: String) : Observable<List<PullRequestResponse>>
 }

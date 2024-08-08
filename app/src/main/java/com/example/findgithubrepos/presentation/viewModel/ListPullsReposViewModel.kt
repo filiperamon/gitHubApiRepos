@@ -1,5 +1,6 @@
 package com.example.findgithubrepos.presentation.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.findgithubrepos.domain.model.PullRequestResponse
@@ -15,10 +16,14 @@ class ListPullsReposViewModel @Inject constructor(
     private var getPullsReposUseCase: GetPullsReposUseCase
 ) : ViewModel() {
 
-    private val listPullRepos: MutableLiveData<PullRequestResponse> = MutableLiveData()
-    val listPullReposLiveData: MutableLiveData<PullRequestResponse> get() = listPullRepos
+    private val listPullRepos: MutableLiveData<List<PullRequestResponse>> = MutableLiveData()
+    val listPullReposLiveData: MutableLiveData<List<PullRequestResponse>> get() = listPullRepos
+
+    private val isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val iLoadingLiveData : LiveData<Boolean> get() = isLoading
 
     private val itemRepos: MutableLiveData<RepositoryItemResponse> = MutableLiveData()
+    val itemReposLiveData : LiveData<RepositoryItemResponse> get() = itemRepos
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -33,10 +38,13 @@ class ListPullsReposViewModel @Inject constructor(
     }
 
     private fun getPullsRepos(owner: String, repo: String) {
+        isLoading.value = true
+
         getPullsReposUseCase.getListPullRepos(owner, repo)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .doOnTerminate {
+                isLoading.value = false
             }
             .subscribe({ response ->
                 listPullRepos.value = response

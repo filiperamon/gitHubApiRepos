@@ -12,7 +12,7 @@ class ReposGitHubRepositoryImpl @Inject constructor(
         return remoteDataSource.getListStarsJavaRepos(language, sort, page)
     }
 
-    override fun getListPullRepos(owner: String, repo: String): Observable<PullRequestResponse> {
+    override fun getListPullRepos(owner: String, repo: String):Observable<List<PullRequestResponse>> {
         return remoteDataSource.getListPullRepos(owner, repo)
     }
 }

@@ -65,15 +65,15 @@ class ListReposGitHubFragment : DaggerFragment(), OnRepoAdapterListener {
     }
 
     private fun observables() {
-        viewModel.listReposGitHubLiveData.observe(viewLifecycleOwner, Observer { listItems ->
+        viewModel.listReposGitHubLiveData.observe(viewLifecycleOwner) { listItems ->
             listToShow.addAll(listItems)
             adapter.updateList(listToShow, listToShow.size - listItems.size, listItems.size)
 
-        })
+        }
 
-        viewModel.iLoadingLiveData.observe(viewLifecycleOwner, Observer { isVisible ->
+        viewModel.iLoadingLiveData.observe(viewLifecycleOwner) { isVisible ->
             binding.loadMoreProgress.isVisible = isVisible
-        })
+        }
     }
 
     private fun getReposStarsGitHub(page: Int) {

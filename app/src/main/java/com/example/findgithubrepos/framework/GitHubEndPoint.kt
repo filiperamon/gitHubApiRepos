@@ -20,5 +20,5 @@ interface GitHubEndPoint {
     fun getRepoPullsDetails(
         @Path("owner") owner: String,
         @Path("repo") repo: String
-    ): Observable<PullRequestResponse>
+    ): Observable<List<PullRequestResponse>>
 }

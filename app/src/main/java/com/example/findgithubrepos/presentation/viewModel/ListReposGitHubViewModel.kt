@@ -44,7 +44,6 @@ class ListReposGitHubViewModel @Inject constructor(
             .subscribe({ response ->
                 reposGitHubList.value = response.items
             }, { e ->
-                Log.e("ListReposGitHubViewModel", "response: ${e.message}")
             }).addToCompositeDisposable(compositeDisposable)
     }
 
