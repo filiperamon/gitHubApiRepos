@@ -1,7 +1,7 @@
 # Busca repositorios API GITHUB
 
-Aplicativo Android que busca repositoricos melhores ranqueados na api do GitHub nas linguagens JAVA
-Foi utilizado as seguintes itens:
+Aplicativo Android que busca repositoricos melhores ranqueados na api do GitHub nas linguagens JAVA.
+Foram utilizados as seguintes libs:
 
  - SDK: Android
  - Arquitetura: MVVM + Clean Architecture
@@ -31,3 +31,6 @@ Fluxo:
 - Listas de repositorios JAVA
 - Listas de pull requests de um repositório selecionado
 - Link para pull request no github.com
+
+<img src="repositores.png" alt="MVVM + Clean">
+<img src="pullrequest.png" alt="MVVM + Clean">
