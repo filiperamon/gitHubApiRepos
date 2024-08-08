@@ -1,6 +1,6 @@
 # Busca repositorios API GITHUB
 
-Aplicativo Android que busca repositoricos melhores ranqueados na api do GitHub nas linguagens JAVA.
+Aplicativo Android que busca repositoricos melhores ranqueados na api do GitHub na linguagen JAVA.
 Foram utilizados as seguintes libs:
 
  - SDK: Android
