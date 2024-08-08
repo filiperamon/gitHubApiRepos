@@ -108,6 +108,9 @@ dependencies {
     implementation libs.rxandroid
     implementation libs.rxjava
 
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
+    testImplementation 'org.mockito:mockito-inline:2.28.2'
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
