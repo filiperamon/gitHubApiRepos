@@ -24,7 +24,7 @@ Camadas separadas em:
 
 Comunicação entre camadas:
 
-
+<img src="diagrama_mvvm_clean.png" alt="MVVM + Clean">
 
 Fluxo:
 
