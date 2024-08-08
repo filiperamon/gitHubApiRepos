@@ -1,4 +1,4 @@
-package com.example.findgithubrepos.presentation.fragment
+package com.example.findgithubrepos.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.findgithubrepos.R
 import com.example.findgithubrepos.domain.model.RepositoryItemResponse
 import com.bumptech.glide.Glide
+import com.example.findgithubrepos.presentation.listener.OnRepoAdapterListener
 
 class ItemRepoGitHubAdapter(
     itemResponse: List<RepositoryItemResponse>,

@@ -1,4 +1,4 @@
-package com.example.findgithubrepos.presentation.fragment
+package com.example.findgithubrepos.presentation.listener
 
 import com.example.findgithubrepos.domain.model.RepositoryItemResponse
 

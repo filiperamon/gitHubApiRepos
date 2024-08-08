@@ -2,6 +2,7 @@ package com.example.findgithubrepos.framework.di.builder
 
 import androidx.lifecycle.ViewModel
 import com.example.findgithubrepos.framework.di.ViewModelKey
+import com.example.findgithubrepos.presentation.viewModel.ListPullsReposViewModel
 import com.example.findgithubrepos.presentation.viewModel.ListReposGitHubViewModel
 import dagger.Binds
 import dagger.Module
@@ -14,5 +15,10 @@ abstract class ViewModelsBuilder {
     @IntoMap
     @ViewModelKey(ListReposGitHubViewModel::class)
     abstract fun bindListReposGitHubViewModel(listReposGitHubViewModel: ListReposGitHubViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ListPullsReposViewModel::class)
+    abstract fun bindListPullsReposViewModel(listPullsReposViewModel: ListPullsReposViewModel): ViewModel
 
 }

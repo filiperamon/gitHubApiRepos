@@ -6,11 +6,11 @@ import com.example.findgithubrepos.domain.model.PullRequestResponse
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetReposStarsGitHubUseCaseImpl @Inject constructor(
+class GetPullsReposUseCaseImpl @Inject constructor(
     private val reposGitHubRepository: ReposGitHubRepository
-) : GetReposStarsGitHubUseCase {
+) : GetPullsReposUseCase {
 
-    override fun gitHubResponseCallBack(language: String, sort: String, page: Int) : Observable<GitHubResponse> {
-        return reposGitHubRepository.getListStarsJavaRepos(language, sort, page)
+    override fun getListPullRepos(owner: String, repo: String): Observable<PullRequestResponse> {
+        return reposGitHubRepository.getListPullRepos(owner, repo)
     }
 }
